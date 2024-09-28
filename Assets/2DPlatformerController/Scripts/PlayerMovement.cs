@@ -78,8 +78,6 @@ public class PlayerMovement : MonoBehaviour
 	private bool dashInput = false;
 	[SerializeField]private float dashHoldTime = 0;
 	[SerializeField] float sinDash;
-	[SerializeField] Material chargeDashMAT;
-	Material originalMAT;
 
     #endregion
 
@@ -142,7 +140,6 @@ public class PlayerMovement : MonoBehaviour
 		{
             dashHoldTime += Time.deltaTime;
             print("hold");
-			spriteRenderer.material = chargeDashMAT;
 
 			if (dashHoldTime > Data.timeToFullDash) spriteRenderer.material.SetInt("_FullCharged", 1);
 
@@ -151,12 +148,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.X))
 		{
-            spriteRenderer.material.SetFloat("_DashProgress", 0);
-            spriteRenderer.material = originalMAT;
-            spriteRenderer.material.SetInt("_FullCharged", 0);
             if (dashHoldTime <= 0) return;
 
-            originalMAT = null;
             print("released");
 
             if (dashHoldTime > Data.timeToFullDash)

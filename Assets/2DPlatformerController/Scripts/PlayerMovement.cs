@@ -9,9 +9,15 @@
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+	[SerializeField] public bool[] ControlsActive;
+	[SerializeField] private Image[] ControlsImages;
+	[SerializeField] private GameObject[] XImages;
+	
+	
 	//Scriptable object which holds all the player's movement parameters. If you don't want to use it
 	//just paste in all the parameters, though you will need to manuly change all references in this script
 	public PlayerData Data;
@@ -113,30 +119,42 @@ public class PlayerMovement : MonoBehaviour
 
 		#region INPUT HANDLER
 		_moveInput.x = Input.GetAxisRaw("Horizontal");
+		if (!ControlsActive[2])
+			_moveInput.x = math.clamp(_moveInput.x, -1, 0);
+		if (!ControlsActive[3])
+			_moveInput.x = math.clamp(_moveInput.x, 0, 1);
+
 		_moveInput.y = Input.GetAxisRaw("Vertical");
+		if (!ControlsActive[0])
+			_moveInput.y = math.clamp(_moveInput.y, -1, 0);
+		if (!ControlsActive[1])
+			_moveInput.y = math.clamp(_moveInput.y, 0, 1);
+
 
 		if (_moveInput.x != 0)
 			CheckDirectionToFace(_moveInput.x > 0);
 
 		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
-			OnJumpInput();
+	        if(ControlsActive[6])
+		        OnJumpInput();
         }
 
 		if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
 		{
-			OnJumpUpInput();
+			if(ControlsActive[6])
+				OnJumpUpInput();
 		}
 
-		dashInput = Input.GetMouseButton(1);
-		if (Input.GetMouseButtonDown(1))
+		dashInput = Input.GetMouseButton(1) && ControlsActive[4];
+		if (Input.GetMouseButtonDown(1) && ControlsActive[4])
 		{
 			dashHoldTime = 0;
 			OnDashInput();
 		}
 
 
-		if(Input.GetMouseButton(1))
+		if(Input.GetMouseButton(1) && ControlsActive[4])
 		{
             dashHoldTime += Time.deltaTime;
             print("hold");
@@ -146,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) && ControlsActive[4])
 		{
             if (dashHoldTime <= 0) return;
 
@@ -256,6 +274,7 @@ public class PlayerMovement : MonoBehaviour
 				_lastDashDir = _moveInput;
 			else
 				_lastDashDir = IsFacingRight ? Vector2.right : Vector2.left;
+			
 
 
 
@@ -600,7 +619,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private bool CanDash()
 	{
-		if (!IsDashing && _dashesLeft < Data.dashAmount && LastOnGroundTime > 0 && !_dashRefilling)
+		if (!IsDashing && _dashesLeft < Data.dashAmount && LastOnGroundTime > 0 && !_dashRefilling && ControlsActive[4])
 		{
 			StartCoroutine(nameof(RefillDash), 1);
 		}

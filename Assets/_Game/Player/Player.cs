@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        if(isAttacking == false)
+        if(isAttacking == false && _playerMovement.ControlsActive[5])
             StartCoroutine(AttackCoroutine());
     }
 

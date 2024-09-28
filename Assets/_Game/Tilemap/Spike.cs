@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float damage;
+
+    bool debounce = false;
+    float debounceTime = .3f;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(collision.GetComponent<Player>())
+        {
+            debounce = true;
+
+            collision.GetComponent<Player>().DamagePlayer();
+
+            Invoke(nameof(Cooldown), debounceTime);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void Cooldown()
     {
-        
+        debounce = false;
     }
+
 }

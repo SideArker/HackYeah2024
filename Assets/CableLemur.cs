@@ -92,6 +92,22 @@ public class CableLemur : MonoBehaviour
 
         
     }
+    IEnumerator Attack2()
+    {
+        Player.instance.SetControl(6, false);
+        Player.instance.SetControl(2, false);
+
+        yield return new WaitForSeconds(3);
+        
+        _animator.Play("Attack1");
+        
+        yield return new WaitForSeconds(8);
+        
+        Player.instance.SetControl(6, true);
+        Player.instance.SetControl(2, true);
+
+        
+    }
 
     [Button]
     public void Test()

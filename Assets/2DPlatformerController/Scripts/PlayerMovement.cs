@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] public GameObject[] XImages;
 	[SerializeField] public Color normalColor;
 	[SerializeField] public Color usedColor;
+
+	public float movement;
 	
 	
 	//Scriptable object which holds all the player's movement parameters. If you don't want to use it
@@ -451,7 +453,7 @@ public class PlayerMovement : MonoBehaviour
 		float speedDif = targetSpeed - RB.velocity.x;
 		//Calculate force along x-axis to apply to thr player
 
-		float movement = speedDif * accelRate;
+		movement = speedDif * accelRate;
 
 		//Convert this to a vector and apply to rigidbody
 		RB.AddForce(movement * Vector2.right, ForceMode2D.Force);

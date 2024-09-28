@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 
-		if(Input.GetKey(KeyCode.X))
+		if(Input.GetMouseButton(1))
 		{
             dashHoldTime += Time.deltaTime;
             print("hold");
@@ -146,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (Input.GetKeyUp(KeyCode.X))
+        if (Input.GetMouseButtonUp(1))
 		{
             if (dashHoldTime <= 0) return;
 

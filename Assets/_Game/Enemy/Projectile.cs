@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] GameObject bulletDestroyParticle;
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Instantiate(bulletDestroyParticle, transform.position, Quaternion.identity);
     }
 }

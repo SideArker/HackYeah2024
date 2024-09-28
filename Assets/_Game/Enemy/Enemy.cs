@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackSpeed; // per min
     [SerializeField] float bulletSpeed;
     [SerializeField] GameObject bullet;
-    [SerializeField] GameObject bulletDestroyParticle;
     // Start is called before the first frame update
     void Start()
     {

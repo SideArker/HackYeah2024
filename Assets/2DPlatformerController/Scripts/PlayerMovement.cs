@@ -14,8 +14,10 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
 	[SerializeField] public bool[] ControlsActive;
-	[SerializeField] private Image[] ControlsImages;
-	[SerializeField] private GameObject[] XImages;
+	[SerializeField] public Image[] ControlsImages;
+	[SerializeField] public GameObject[] XImages;
+	[SerializeField] public Color normalColor;
+	[SerializeField] public Color usedColor;
 	
 	
 	//Scriptable object which holds all the player's movement parameters. If you don't want to use it

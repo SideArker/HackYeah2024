@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 7355268323379288869}
   - component: {fileID: 7070838375110806850}
   - component: {fileID: 8290831040893497872}
+  - component: {fileID: 8372031341593622679}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -233,6 +234,7 @@ Transform:
   m_Children:
   - {fileID: 7582208336471562800}
   - {fileID: 8978372124538351756}
+  - {fileID: 7255690997067899470}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7355268323379288869
@@ -325,9 +327,29 @@ MonoBehaviour:
   _frontWallCheckPoint: {fileID: 3569376530280120847}
   _backWallCheckPoint: {fileID: 9064641237027524705}
   _wallCheckSize: {x: 0.5, y: 1}
+  dashHoldTime: 0
   _groundLayer:
     serializedVersion: 2
     m_Bits: 129
+--- !u!114 &8372031341593622679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624454773857066483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89aa86804aeefe4439116e62ecb7181d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  onPlrDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPoint: {fileID: 7255690997067899470}
+  attackObject: {fileID: 1979835995851137103, guid: dae6d008887fa4a399fbb610cdb5a0f9, type: 3}
+  attackDelay: 0.5
 --- !u!1 &3607146506939146561
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +488,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8978372124538351756}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4872628740614470850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7255690997067899470}
+  m_Layer: 6
+  m_Name: attackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7255690997067899470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872628740614470850}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.25, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5429787382259803095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5320090592913062881
 GameObject:

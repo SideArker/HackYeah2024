@@ -35,8 +35,9 @@ public class Enemy : MonoBehaviour
 
         if (!hit) return;
 
-        if(hit.transform.gameObject.GetComponent<Player>())
+        if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            print(hit.transform.name);
             Player.instance.DamagePlayer();
         }
 
@@ -56,13 +57,11 @@ public class Enemy : MonoBehaviour
         Vector2 direction = transform.TransformDirection(moveDirection)* .75f;
         Gizmos.DrawRay(transform.position, direction);
     }
+    
 
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Damage()
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Player")) return;
-
+        print("Damage Enemy");
         Health--;
 
         if(Health <= 0)
@@ -70,6 +69,5 @@ public class Enemy : MonoBehaviour
             Debug.Log("Enemy dies now");
             Destroy(gameObject);
         }
-
     }
 }

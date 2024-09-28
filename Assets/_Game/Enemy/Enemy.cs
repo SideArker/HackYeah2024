@@ -45,12 +45,12 @@ public class Enemy : MonoBehaviour
 
         while (true)
         {
-            if (Vector2.Distance(transform.position, plr.transform.position) > 50) yield break;
-            Debug.Log("a");
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            if (Vector2.Distance(transform.position, plr.transform.position) > 50) yield return new WaitForSeconds(1);
+                Debug.Log("a");
+                Instantiate(bullet, transform.position, Quaternion.identity);
 
-            yield return new WaitForSeconds(60 / attackSpeed);
-        }
+                yield return new WaitForSeconds(60 / attackSpeed);
+         }
     }
 
 

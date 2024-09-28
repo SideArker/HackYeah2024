@@ -4,9 +4,17 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+enum enemyType
+{
+    Lemur,
+    Bird
+}
+
+
 public class Enemy : MonoBehaviour
 {
     [Header("Main")]
+    [SerializeField] enemyType enemyVariant;
     [Tooltip("Amount of hits enemy needs to die")]
     [SerializeField] int Health;
 
@@ -17,11 +25,31 @@ public class Enemy : MonoBehaviour
     bool isFacingRight = false;
     Rigidbody2D rb;
 
+    [Header("Bird")]
+
+    [SerializeField] float attackSpeed; // per min
+    [SerializeField] float bulletSpeed;
+    [SerializeField] GameObject bullet;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
+
+        if (enemyVariant == enemyType.Bird) StartCoroutine(BirdAttackTick());
     }
+
+
+    IEnumerator BirdAttackTick()
+    {
+        while (true)
+        {
+
+
+            yield return new WaitForSeconds(60 / attackSpeed);
+        }
+    }
+
+
 
     // Update is called once per frame
     void FixedUpdate()

@@ -323,6 +323,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b25879a85aef4049811869e47d814b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ControlsActive: 01010101010101
+  ControlsImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  XImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  usedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   Data: {fileID: 11400000, guid: e6de6150ab38ff74b9ee0fa32028adf7, type: 2}
   _groundCheckPoint: {fileID: 8077527218013605482}
   _groundCheckSize: {x: 0.49, y: 0.03}

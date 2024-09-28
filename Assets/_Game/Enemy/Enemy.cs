@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
             Player.instance.DamagePlayer();
         }
 
-        if (!isFacingRight && moveDirection.x <= 0f || isFacingRight && moveDirection.x >= 1f)
+        else if (!isFacingRight && moveDirection.x <= 0f || isFacingRight && moveDirection.x >= 1f)
         {
             moveDirection = -moveDirection;
             isFacingRight = !isFacingRight;

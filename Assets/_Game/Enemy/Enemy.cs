@@ -41,9 +41,13 @@ public class Enemy : MonoBehaviour
 
     IEnumerator BirdAttackTick()
     {
+        GameObject plr = Player.instance.gameObject;
+
         while (true)
         {
-
+            if (Vector2.Distance(transform.position, plr.transform.position) > 50) yield break;
+            Debug.Log("a");
+            Instantiate(bullet, transform.position, Quaternion.identity);
 
             yield return new WaitForSeconds(60 / attackSpeed);
         }

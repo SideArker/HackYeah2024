@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Celeste Style
   m_EditorClassIdentifier: 
   gravityStrength: -77.77777
-  gravityScale: 2.5925925
+  gravityScale: 7.9284167
   fallGravityMult: 1.5
   maxFallSpeed: 25
   fastFallGravityMult: 2
@@ -45,7 +45,8 @@ MonoBehaviour:
   dashAmount: 1
   dashSpeed: 20
   dashSleepTime: 0.05
-  dashAttackTime: 0.15
+  timeToFullDash: 0.5
+  dashAttackTime: {x: 0, y: 0.5}
   dashEndTime: 0.15
   dashEndSpeed: {x: 15, y: 15}
   dashEndRunLerp: 0.5

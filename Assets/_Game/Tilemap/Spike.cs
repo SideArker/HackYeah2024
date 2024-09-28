@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Spike : MonoBehaviour
 {
-    [SerializeField] float damage;
 
     bool debounce = false;
     float debounceTime = .3f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<Player>())
+        if(collision.GetComponent<Player>() && !debounce)
         {
             debounce = true;
 

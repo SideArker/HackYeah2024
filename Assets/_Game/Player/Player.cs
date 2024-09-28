@@ -1,10 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using UnityEngine.Events;
 
 public class Player : MonoBehaviour
@@ -24,6 +20,13 @@ public class Player : MonoBehaviour
     private bool isAttacking = false;
     [SerializeField] private float attackDelay = 0.5f;
 
+    [SerializeField] private float iframeDuration;
+    [SerializeField] Material IframeMAT;
+
+    Material PrevMat;
+    bool iframes = false;
+    SpriteRenderer spriteRenderer;
+
     float horizontal;
     float vertical;
 
@@ -42,12 +45,25 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+
+    void iframeCooldown()
+    {
+        iframes = false;
+        spriteRenderer.material = PrevMat;
+        PrevMat = null;
     }
 
     public void DamagePlayer()
     {
+        if (iframes) return;
         health--;
-
+        iframes = true;
+        PrevMat = spriteRenderer.material;
+        spriteRenderer.material = IframeMAT;
+        Invoke(nameof(iframeCooldown), iframeDuration);
         // _playerMovement.OnJumpInput();
         
         if(health <= 0)

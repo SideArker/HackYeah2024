@@ -122,8 +122,8 @@ public class PlayerMovement : MonoBehaviour
 			OnJumpUpInput();
 		}
 
-		dashInput = Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.K);
-		if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.K))
+		dashInput = Input.GetMouseButton(1);
+		if (Input.GetMouseButtonDown(1))
 		{
 			dashHoldTime = 0;
 			OnDashInput();

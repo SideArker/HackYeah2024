@@ -7,6 +7,7 @@
  */
 
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 	public float LastOnWallRightTime { get; private set; }
 	public float LastOnWallLeftTime { get; private set; }
 
+
 	//Jump
 	private bool _isJumpCut;
 	private bool _isJumpFalling;
@@ -50,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
 	private bool _dashRefilling;
 	private Vector2 _lastDashDir;
 	private bool _isDashAttacking;
+
+	SpriteRenderer spriteRenderer;
 
 	#endregion
 
@@ -73,7 +77,10 @@ public class PlayerMovement : MonoBehaviour
 	private float dashAttackTime = 0;
 	private bool dashInput = false;
 	[SerializeField]private float dashHoldTime = 0;
-	private bool dashKeyHolded = false;
+	[SerializeField] float sinDash;
+	[SerializeField] Material chargeDashMAT;
+	Material originalMAT;
+
     #endregion
 
     #region LAYERS & TAGS
@@ -85,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		RB = GetComponent<Rigidbody2D>();
 		// AnimHandler = GetComponent<PlayerAnimator>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	private void Start()
@@ -129,27 +137,40 @@ public class PlayerMovement : MonoBehaviour
 			OnDashInput();
 		}
 
-		if (dashInput)
-		{
-			dashHoldTime += Time.deltaTime;
-			dashKeyHolded = true;
-			print("hold");
-		}
-		else if (dashKeyHolded)
-		{
-			print("released");
-			dashKeyHolded = false;
-			if (dashHoldTime > Data.timeToFullDash)
-				dashHoldTime = Data.timeToFullDash;
 
-		
-			dashAttackTime = (dashHoldTime / Data.timeToFullDash * (Data.dashAttackTime.y - Data.dashAttackTime.x) +
-			                  Data.dashAttackTime.x);
-		
-		
-		
-			LastPressedDashTime = Data.dashInputBufferTime;
-		}
+		if(Input.GetKey(KeyCode.X))
+		{
+            dashHoldTime += Time.deltaTime;
+            print("hold");
+			spriteRenderer.material = chargeDashMAT;
+
+			if (dashHoldTime > Data.timeToFullDash) spriteRenderer.material.SetInt("_FullCharged", 1);
+
+
+        }
+
+        if (Input.GetKeyUp(KeyCode.X))
+		{
+            spriteRenderer.material.SetFloat("_DashProgress", 0);
+            spriteRenderer.material = originalMAT;
+            spriteRenderer.material.SetInt("_FullCharged", 0);
+            if (dashHoldTime <= 0) return;
+
+            originalMAT = null;
+            print("released");
+
+            if (dashHoldTime > Data.timeToFullDash)
+                dashHoldTime = Data.timeToFullDash;
+
+            float dashPower = Mathf.Clamp01(dashHoldTime / Data.timeToFullDash);
+
+            dashAttackTime = Data.dashAttackTime * dashPower;
+
+
+			dashHoldTime = 0;
+            LastPressedDashTime = Data.dashInputBufferTime;
+        }
+
 		
 		#endregion
 

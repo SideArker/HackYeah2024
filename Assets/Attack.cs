@@ -21,12 +21,19 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        print(other.name);
         if (isTouched) return;
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
+        CableLemur boss = other.gameObject.GetComponent<CableLemur>();
 
         if (enemy)
         {
             enemy.Damage();
+            isTouched = true;
+        }
+        else if(boss)
+        {
+            boss.Damage();
             isTouched = true;
         }
     }

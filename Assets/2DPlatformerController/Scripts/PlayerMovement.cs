@@ -13,6 +13,8 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+	public static PlayerMovement Instance;
+	
 	[SerializeField] public bool[] ControlsActive;
 	[SerializeField] public Image[] ControlsImages;
 	[SerializeField] public GameObject[] XImages;
@@ -99,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
 		RB = GetComponent<Rigidbody2D>();
 		// AnimHandler = GetComponent<PlayerAnimator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		if (Instance == null) Instance = this;
 	}
 
 	private void Start()
@@ -159,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
 		if(Input.GetMouseButton(1) && ControlsActive[4])
 		{
             dashHoldTime += Time.deltaTime;
-            print("hold");
+            // print("hold");
 
 			if (dashHoldTime > Data.timeToFullDash) spriteRenderer.material.SetInt("_FullCharged", 1);
 
@@ -170,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
 		{
             if (dashHoldTime <= 0) return;
 
-            print("released");
+            // print("released");
 
             if (dashHoldTime > Data.timeToFullDash)
                 dashHoldTime = Data.timeToFullDash;

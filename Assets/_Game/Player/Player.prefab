@@ -372,6 +372,8 @@ MonoBehaviour:
   attackPoint: {fileID: 7255690997067899470}
   attackObject: {fileID: 1979835995851137103, guid: dae6d008887fa4a399fbb610cdb5a0f9, type: 3}
   attackDelay: 0.5
+  iframeDuration: 0
+  IframeMAT: {fileID: 0}
 --- !u!212 &4741259278127291962
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -609,7 +611,7 @@ Transform:
   m_GameObject: {fileID: 4872628740614470850}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 0, z: 0}
+  m_LocalPosition: {x: 1.648, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

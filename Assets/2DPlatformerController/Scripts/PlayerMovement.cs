@@ -302,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
 			//Higher gravity if we've released the jump input or are falling
 			if (IsSliding)
 			{
-				SetGravityScale(0);
+				//SetGravityScale(0);
 			}
 			else if (RB.velocity.y < 0 && _moveInput.y < 0)
 			{
@@ -573,20 +573,20 @@ public class PlayerMovement : MonoBehaviour
 	private void Slide()
 	{
 		//We remove the remaining upwards Impulse to prevent upwards sliding
-		if(RB.velocity.y > 0)
-		{
-		    RB.AddForce(-RB.velocity.y * Vector2.up,ForceMode2D.Impulse);
-		}
+		//if(RB.velocity.y > 0)
+		//{
+		//    RB.AddForce(-RB.velocity.y * Vector2.up,ForceMode2D.Impulse);
+		//}
 	
-		//Works the same as the Run but only in the y-axis
-		//THis seems to work fine, buit maybe you'll find a better way to implement a slide into this system
-		float speedDif = Data.slideSpeed - RB.velocity.y;	
-		float movement = speedDif * Data.slideAccel;
-		//So, we clamp the movement here to prevent any over corrections (these aren't noticeable in the Run)
-		//The force applied can't be greater than the (negative) speedDifference * by how many times a second FixedUpdate() is called. For more info research how force are applied to rigidbodies.
-		movement = Mathf.Clamp(movement, -Mathf.Abs(speedDif)  * (1 / Time.fixedDeltaTime), Mathf.Abs(speedDif) * (1 / Time.fixedDeltaTime));
+		////Works the same as the Run but only in the y-axis
+		////THis seems to work fine, buit maybe you'll find a better way to implement a slide into this system
+		//float speedDif = Data.slideSpeed - RB.velocity.y;	
+		//float movement = speedDif * Data.slideAccel;
+		////So, we clamp the movement here to prevent any over corrections (these aren't noticeable in the Run)
+		////The force applied can't be greater than the (negative) speedDifference * by how many times a second FixedUpdate() is called. For more info research how force are applied to rigidbodies.
+		//movement = Mathf.Clamp(movement, -Mathf.Abs(speedDif)  * (1 / Time.fixedDeltaTime), Mathf.Abs(speedDif) * (1 / Time.fixedDeltaTime));
 
-		RB.AddForce(movement * Vector2.up);
+		//RB.AddForce(movement * Vector2.up);
 	}
     #endregion
 

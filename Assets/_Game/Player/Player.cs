@@ -43,8 +43,15 @@ public class Player : MonoBehaviour
         Debug.Log("Plr dmaged");
     }
 
+    public void Attack()
+    {
+
+    }
+
     private void Update()
     {
+
+
 
         float speed = 4;
         horizontal = Input.GetAxisRaw("Horizontal");

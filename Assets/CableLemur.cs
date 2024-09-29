@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class CableLemur : MonoBehaviour
 {
+    public static CableLemur Instance;
     
     [SerializeField] int Health;
     [SerializeField] private PlayerMovement _playerMovement;
@@ -17,7 +18,13 @@ public class CableLemur : MonoBehaviour
     [SerializeField] private GameObject wavePrefab;
     private Animator _animator;
     private bool canHit = true;
-    
+    public bool duringBattle = false;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
+
     private void Start()
     {
         _playerMovement = PlayerMovement.Instance;
@@ -27,11 +34,14 @@ public class CableLemur : MonoBehaviour
     [Button]
     public void StartBattle()
     {
+        print("BIc sie");
+        duringBattle = true;
         StartCoroutine(battle());
     }
 
     IEnumerator battle()
     {
+        print(1);
         yield return new WaitForSeconds(3);
         while (true)
         {

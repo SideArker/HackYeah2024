@@ -8,6 +8,11 @@ public class DialogTrigger : MonoBehaviour
     [SerializeField] List<DialogProperties> Dialogs = new List<DialogProperties>();
 
     [Button]
+
+    private void Start()
+    {
+        StartDialog();
+    }
     public void StartDialog()
     {
         DialogSystem.instance.StopDialog();

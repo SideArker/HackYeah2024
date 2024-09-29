@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using UnityEngine.UI;
 
 /// <summary>
 /// Class containing the properties of given dialog
@@ -14,6 +15,7 @@ public class DialogProperties
     public string Name;
     [TextArea(10, 15)]
     public string Text;
+    public Sprite icon;
     public Color NameColor = Color.white;
     public bool FreezeMovement = false;
     public int FontSize = 36;
@@ -37,6 +39,7 @@ public class DialogSystem : MonoBehaviour
     [SerializeField] TMP_Text dialogText;
     [SerializeField] TMP_Text popup;
     [SerializeField] GameObject continueTarget;
+    [SerializeField] Image dialogIcon;
 
     [Header("Text Lerp")]
     [SerializeField] bool lerpText;
@@ -68,6 +71,8 @@ public class DialogSystem : MonoBehaviour
     public void NextDialog()
     {
         popup.gameObject.SetActive(false);
+        dialogIcon.gameObject.SetActive(false);
+
         skipLerp = false;
         StopCoroutine(DialogTextLerp(""));
         TextShake.Shake(false, "", -1);
@@ -88,6 +93,12 @@ public class DialogSystem : MonoBehaviour
         dialogName.text = currentDialog.Name;
         dialogName.color = (Color)currentDialog.NameColor;
         dialogText.text = currentDialog.Text;
+        if (currentDialog.icon)
+        {
+            dialogIcon.sprite = currentDialog.icon;
+            dialogIcon.gameObject.SetActive(true);
+        }
+
 
         if (dialogText.text.Contains("<shake>".ToLower().Trim()))
         {

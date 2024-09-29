@@ -16,10 +16,5 @@ public class IntroManager : MonoBehaviour
 
     public void NextDialogue()
     {
-        counter++;
-        if(counter == 5)
-        {
-            SceneManager.LoadScene("Level1");
-        }
     }
 }

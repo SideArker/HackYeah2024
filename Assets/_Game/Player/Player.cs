@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
-        hp.text = health.ToString();
+        //hp.text = health.ToString();
         
         // GlobalSound.PlayMusic("ODGŁOSY CHODZENIA", true);
         // GlobalSound.GetMusicAudioSource("ODGŁOSY CHODZENIA").mute = true;
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         // Destroy(hearts[0]);
         // hearts.RemoveAt(0);
         iframes = true;
-        hp.text = health.ToString();
+        //hp.text = health.ToString();
         anim.SetBool("Iframe", true);
         Invoke(nameof(iframeCooldown), iframeDuration);
 

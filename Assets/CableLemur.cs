@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class CableLemur : MonoBehaviour
@@ -88,7 +89,7 @@ public class CableLemur : MonoBehaviour
             if (Health <= 0)
             {
                 Debug.Log("Enemy dies now");
-                Application.Quit();
+                SceneManager.LoadScene(6);
             }
         }
     }

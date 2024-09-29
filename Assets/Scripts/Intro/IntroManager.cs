@@ -10,7 +10,7 @@ public class IntroManager : MonoBehaviour
     public void NextDialogue()
     {
         counter++;
-        if(counter == 5)
+        if(counter == 8)
         {
             SceneManager.LoadScene("Level1");
         }

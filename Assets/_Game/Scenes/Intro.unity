@@ -314,7 +314,28 @@ MonoBehaviour:
     FreezeMovement: 0
     FontSize: 36
   - Name: Narrator
-    Text: Someone has to stop this madness.
+    Text: The treacherous lemur began to use technology to speed up the entire process
+      as quickly as possible
+    icon: {fileID: 0}
+    NameColor: {r: 0.6156863, g: 0.9529412, b: 0.20392157, a: 1}
+    FreezeMovement: 0
+    FontSize: 36
+  - Name: Narrator
+    Text: Lemurs opposed to all this could not remain passive, so they began to use
+      modern technology to stop the plans of the cruel tyrant.
+    icon: {fileID: 0}
+    NameColor: {r: 0.6156863, g: 0.9529412, b: 0.20392157, a: 1}
+    FreezeMovement: 0
+    FontSize: 36
+  - Name: Narrator
+    Text: And so began a battle using advanced technology between seemingly primitive
+      individuals.
+    icon: {fileID: 0}
+    NameColor: {r: 0.6156863, g: 0.9529412, b: 0.20392157, a: 1}
+    FreezeMovement: 0
+    FontSize: 36
+  - Name: Narrator
+    Text: Someone has to stop the reign of the big cruel Lemur
     icon: {fileID: 0}
     NameColor: {r: 0.6156863, g: 0.9529412, b: 0.20392157, a: 1}
     FreezeMovement: 0

@@ -7,7 +7,7 @@ public class level1 : MonoBehaviour
 {
     private void Start()
     {
-        GlobalSound.StopMusic("game");
+        GlobalSound.StopAllMusic();
         GlobalSound.PlayMusic("AMBIENT DO GIERKI" ,true);
     }
 }

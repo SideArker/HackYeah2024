@@ -398,6 +398,8 @@ public class PlayerMovement : MonoBehaviour
 	//Methods which whandle input detected in Update()
     public void OnJumpInput()
 	{
+		AudioSource.PlayClipAtPoint(GlobalSound.clips["SKOK"], transform.position, 5f);
+
 		LastPressedJumpTime = Data.jumpInputBufferTime;
 	}
 

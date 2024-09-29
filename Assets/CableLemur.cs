@@ -40,6 +40,8 @@ public class CableLemur : MonoBehaviour
             print(attack);
 
             canHit = false;
+            _animator.SetBool("attack1", false);
+
             switch (attack)
             {
                 case 1:
@@ -52,7 +54,8 @@ public class CableLemur : MonoBehaviour
                     yield return Attack3();
                     break;
             }
-
+            
+            _animator.SetBool("attack1", true);
             canHit = true;
 
             yield return new WaitForSeconds(5);
@@ -91,10 +94,14 @@ public class CableLemur : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         
-        _animator.Play("Attack1");
+        // _animator.Play("Attack1");
+        _animator.SetBool("attack1", true);
+
         
         yield return new WaitForSeconds(8);
         
+        _animator.SetBool("attack1", false);
+
         Player.instance.SetControl(6, true);
         Player.instance.SetControl(2, true);
 
@@ -104,7 +111,7 @@ public class CableLemur : MonoBehaviour
     {
         Player.instance.SetControl(1, false);
         Player.instance.SetControl(2, false);
-        Player.instance.SetControl(3, false);
+        // Player.instance.SetControl(3, false);
 
         yield return new WaitForSeconds(3);
         print("after 3 s");
@@ -129,7 +136,7 @@ public class CableLemur : MonoBehaviour
         
         Player.instance.SetControl(1, true);
         Player.instance.SetControl(2, true);
-        Player.instance.SetControl(3, true);
+        // Player.instance.SetControl(3, true);
 
         
     }

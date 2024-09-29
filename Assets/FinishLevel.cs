@@ -7,10 +7,15 @@ public class FinishLevel : MonoBehaviour
 {
     [SerializeField] GameObject nextLevelUi;
 
+    public void GoToMap()
+    {
+        SceneManager.LoadScene("Map");
+    }
     public void NextLevel()
     {
         SceneManager.LoadScene("Level2");
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

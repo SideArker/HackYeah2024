@@ -5,7 +5,6 @@ using TMPro;
 using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {

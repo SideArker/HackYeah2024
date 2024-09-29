@@ -338,12 +338,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89aa86804aeefe4439116e62ecb7181d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  health: 2
   onPlrDeath:
     m_PersistentCalls:
       m_Calls: []
-  hp: {fileID: 0}
-  heartPrefab: {fileID: 0}
   attackPoint: {fileID: 7255690997067899470}
   attackObject: {fileID: 1979835995851137103, guid: dae6d008887fa4a399fbb610cdb5a0f9, type: 3}
   attackDelay: 0.5

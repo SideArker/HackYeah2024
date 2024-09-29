@@ -8,7 +8,7 @@ public class TriggerEnter : MonoBehaviour
     public UnityEvent ontrigger;
     public UnityEvent ontriggerout;
     public bool isIn = false;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {

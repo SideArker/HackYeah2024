@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,10 +27,13 @@ public class Player : MonoBehaviour
     Material PrevMat;
     bool iframes = false;
     SpriteRenderer spriteRenderer;
+    Animator anim;
 
-    float horizontal;
-    float vertical;
+    Rigidbody2D rb;
 
+
+    public bool grounded = false;
+    
     // Rigidbody2D rb;
 
     Vector2 movement;
@@ -46,13 +50,15 @@ public class Player : MonoBehaviour
     {
         _playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
     void iframeCooldown()
     {
         iframes = false;
-        spriteRenderer.material = PrevMat;
+        anim.SetBool("Iframe", false);
         PrevMat = null;
     }
 
@@ -61,10 +67,8 @@ public class Player : MonoBehaviour
         if (iframes) return;
         health--;
         iframes = true;
-        PrevMat = spriteRenderer.material;
-        spriteRenderer.material = IframeMAT;
+        anim.SetBool("Iframe", true);
         Invoke(nameof(iframeCooldown), iframeDuration);
-        // _playerMovement.OnJumpInput();
         
         if(health <= 0)
         {
@@ -97,25 +101,31 @@ public class Player : MonoBehaviour
     
     private void Update()
     {
+
+        if (GetComponent<PlayerMovement>().LastOnGroundTime == 0.1f) grounded = true;
+        else grounded = false;
+
+
         if (Input.GetMouseButtonDown(0))
         {
             Attack();
+            anim.Play("Attack");
         }
 
-        _playerMovement.ControlsImages[0].color =
-            Input.GetKey(KeyCode.W) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        _playerMovement.ControlsImages[1].color =
-            Input.GetKey(KeyCode.S) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        _playerMovement.ControlsImages[2].color =
-            Input.GetKey(KeyCode.D) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        _playerMovement.ControlsImages[3].color =
-            Input.GetKey(KeyCode.A) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        _playerMovement.ControlsImages[4].color =
-            Input.GetMouseButton(1) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        _playerMovement.ControlsImages[5].color =
-            Input.GetMouseButton(0) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        _playerMovement.ControlsImages[6].color =
-            Input.GetKey(KeyCode.Space) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        //_playerMovement.ControlsImages[0].color =
+        //    Input.GetKey(KeyCode.W) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        //_playerMovement.ControlsImages[1].color =
+        //    Input.GetKey(KeyCode.S) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        //_playerMovement.ControlsImages[2].color =
+        //    Input.GetKey(KeyCode.D) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        //_playerMovement.ControlsImages[3].color =
+        //    Input.GetKey(KeyCode.A) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        //_playerMovement.ControlsImages[4].color =
+        //    Input.GetMouseButton(1) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        //_playerMovement.ControlsImages[5].color =
+        //    Input.GetMouseButton(0) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        //_playerMovement.ControlsImages[6].color =
+        //    Input.GetKey(KeyCode.Space) ? _playerMovement.usedColor : _playerMovement.normalColor;
     }
 
 

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     public static Player instance;
 
+    [SerializeField] private Transform spawnpoint;
+
     [SerializeField] float health = 4;
     
     public UnityEvent onPlrDeath;
@@ -89,10 +91,18 @@ public class Player : MonoBehaviour
         
         if(health <= 0)
         {
-            
-            onPlrDeath.Invoke();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+            if(!CableLemur.Instance.duringBattle)
+            {
+                onPlrDeath.Invoke();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else
+            {
+                health = 5; 
+                DamagePlayer();
+                instance.gameObject.transform.position = spawnpoint.position;
+                StopAllCoroutines();
+            }
         }
 
         Debug.Log("Plr dmaged");
@@ -143,37 +153,20 @@ public class Player : MonoBehaviour
             anim.SetBool("Attacking", true);
         }
 
-        //_playerMovement.ControlsImages[0].color =
-        //    Input.GetKey(KeyCode.W) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        //_playerMovement.ControlsImages[1].color =
-        //    Input.GetKey(KeyCode.S) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        //_playerMovement.ControlsImages[2].color =
-        //    Input.GetKey(KeyCode.D) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        //_playerMovement.ControlsImages[3].color =
-        //    Input.GetKey(KeyCode.A) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        //_playerMovement.ControlsImages[4].color =
-        //    Input.GetMouseButton(1) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        //_playerMovement.ControlsImages[5].color =
-        //    Input.GetMouseButton(0) ? _playerMovement.usedColor : _playerMovement.normalColor;
-        //_playerMovement.ControlsImages[6].color =
-        //    Input.GetKey(KeyCode.Space) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        // _playerMovement.ControlsImages[0].color =
+        //     Input.GetKey(KeyCode.W) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        // _playerMovement.ControlsImages[1].color =
+        //     Input.GetKey(KeyCode.S) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        // _playerMovement.ControlsImages[2].color =
+        //     Input.GetKey(KeyCode.D) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        // _playerMovement.ControlsImages[3].color =
+        //     Input.GetKey(KeyCode.A) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        // _playerMovement.ControlsImages[4].color =
+        //     Input.GetMouseButton(1) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        // _playerMovement.ControlsImages[5].color =
+        //     Input.GetMouseButton(0) ? _playerMovement.usedColor : _playerMovement.normalColor;
+        // _playerMovement.ControlsImages[6].color =
+        //     Input.GetKey(KeyCode.Space) ? _playerMovement.usedColor : _playerMovement.normalColor;
     }
 
-
-    // private void Update()
-    // {
-    //
-    //
-    //
-    //     float speed = 4;
-    //     // horizontal = Input.GetAxisRaw("Horizontal");
-    //     // vertical = Input.GetAxisRaw("Vertical");
-    //
-    //      movement = new Vector2(horizontal, vertical).normalized * speed;
-    // }
-
-    // private void FixedUpdate()
-    // {
-    //     rb.velocity = movement; 
-    // }
 }

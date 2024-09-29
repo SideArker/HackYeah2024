@@ -63,6 +63,10 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         hp.text = health.ToString();
+        
+        // GlobalSound.PlayMusic("ODGŁOSY CHODZENIA", true);
+        // GlobalSound.GetMusicAudioSource("ODGŁOSY CHODZENIA").mute = true;
+
     }
 
 

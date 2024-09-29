@@ -124,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
 		LastPressedDashTime -= Time.deltaTime;
 		#endregion
 
+		
+		
 		#region INPUT HANDLER
 		_moveInput.x = Input.GetAxisRaw("Horizontal");
 		if (!ControlsActive[2])
@@ -217,7 +219,16 @@ public class PlayerMovement : MonoBehaviour
                 }
 
 				LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
+
             }		
+				// if (movement > 0.01f)
+				// {
+				// 	// GlobalSound.GetMusicAudioSource("ODGŁOSY CHODZENIA").mute = true;
+				// }
+				// else
+				// {
+				// 	// GlobalSound.GetMusicAudioSource("ODGŁOSY CHODZENIA").mute = false;
+				// }
 
 			//Right Wall Check
 			if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 
 public class ReadOnlyAttribute : PropertyAttribute
@@ -22,3 +24,4 @@ public class ReadOnlyPropertyDrawer : PropertyDrawer
 }
 
 // Learn More with this Tutorial: https://youtu.be/r3nwTGLHygI
+#endif

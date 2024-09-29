@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -88,7 +89,10 @@ public class Player : MonoBehaviour
         
         if(health <= 0)
         {
+            
             onPlrDeath.Invoke();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         }
 
         Debug.Log("Plr dmaged");

@@ -12,6 +12,9 @@ public class CableLemur : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private Transform wallSpawn;
     [SerializeField] private GameObject wallPrefab;
+    [SerializeField] private Transform waveSpawnLeft;
+    [SerializeField] private Transform waveSpawnRight;
+    [SerializeField] private GameObject wavePrefab;
     private Animator _animator;
     private bool canHit = true;
     
@@ -29,6 +32,7 @@ public class CableLemur : MonoBehaviour
 
     IEnumerator battle()
     {
+        yield return new WaitForSeconds(3);
         while (true)
         {
             int attack = Random.Range(1, 4);
@@ -45,6 +49,7 @@ public class CableLemur : MonoBehaviour
                     yield return Attack2();
                     break;
                 case 3:
+                    yield return Attack3();
                     break;
             }
 
@@ -104,6 +109,7 @@ public class CableLemur : MonoBehaviour
         yield return new WaitForSeconds(3);
         print("after 3 s");
         
+        
         for (int i = 0; i < 5; i++)
         {
             // print("in for");
@@ -116,6 +122,9 @@ public class CableLemur : MonoBehaviour
             // print("after inst");
 
         }
+
+        
+
         
         
         Player.instance.SetControl(1, true);
@@ -124,10 +133,33 @@ public class CableLemur : MonoBehaviour
 
         
     }
+    IEnumerator Attack3()
+    {
+        Player.instance.SetControl(4, false);
+
+        yield return new WaitForSeconds(3);
+        
+        for (int i = 0; i < 5; i++)
+        {
+            // print("in for");
+            var wave = Instantiate(wavePrefab, waveSpawnRight);
+            wave = Instantiate(wavePrefab, waveSpawnLeft);
+            wave.gameObject.transform.GetComponent<wave>().direction = -1;
+            // print("after inst");
+
+            yield return new WaitForSeconds(2);
+            // print("after inst");
+
+        }
+        
+        Player.instance.SetControl(4, true);
+
+        
+    }
 
     [Button]
     public void Test()
     {
-        StartCoroutine(Attack2());
+        StartCoroutine(Attack3());
     }
 }

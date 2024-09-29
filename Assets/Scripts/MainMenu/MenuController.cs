@@ -10,7 +10,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] CanvasGroup uiElement;
    public void StartGame()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Intro");
     }
 
     public void OpenCloseOptions()

@@ -39,8 +39,8 @@ public class CableLemur : MonoBehaviour
             
             print(attack);
 
-            canHit = false;
-            _animator.SetBool("attack1", false);
+            // canHit = false;
+            _animator.SetBool("scream", false);
 
             switch (attack)
             {
@@ -55,8 +55,8 @@ public class CableLemur : MonoBehaviour
                     break;
             }
             
-            _animator.SetBool("attack1", true);
-            canHit = true;
+            _animator.SetBool("scream", true);
+            // canHit = true;
 
             yield return new WaitForSeconds(5);
         }

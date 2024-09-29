@@ -1,5 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,10 +12,13 @@ public class Player : MonoBehaviour
     public static Player instance;
 
     [SerializeField] float health = 4;
-
+    
     public UnityEvent onPlrDeath;
 
     private PlayerMovement _playerMovement;
+
+    [SerializeField] private TMP_Text hp;
+    [SerializeField] GameObject heartPrefab;
 
     [SerializeField] Transform attackPoint;
     [SerializeField] GameObject attackObject;
@@ -52,6 +58,8 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        hp.text = health.ToString();
     }
 
 
@@ -71,7 +79,10 @@ public class Player : MonoBehaviour
     {
         if (iframes) return;
         health--;
+        // Destroy(hearts[0]);
+        // hearts.RemoveAt(0);
         iframes = true;
+        hp.text = health.ToString();
         anim.SetBool("Iframe", true);
         Invoke(nameof(iframeCooldown), iframeDuration);
         

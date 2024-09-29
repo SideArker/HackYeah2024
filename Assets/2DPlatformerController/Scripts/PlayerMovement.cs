@@ -164,6 +164,17 @@ public class PlayerMovement : MonoBehaviour
 		if(Input.GetMouseButton(1) && ControlsActive[4])
 		{
             dashHoldTime += Time.deltaTime;
+
+            if (dashHoldTime > Data.timeToFullDash)
+            {
+	            var s = Player.instance.gameObject.GetComponent<SpriteRenderer>();
+	            s.color = Color.red;
+	            dashHoldTime = Data.timeToFullDash;
+            }
+
+            // gameObject.transform.localScale = new Vector3(math.clamp(dashHoldTime / Data.timeToFullDash * Time.deltaTime, 0.5f, 1), gameObject.transform.localScale.y,gameObject.transform.localScale.z);
+
+            
             // print("hold");
 
 			if (dashHoldTime > Data.timeToFullDash) spriteRenderer.material.SetInt("_FullCharged", 1);
@@ -172,13 +183,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(1) && ControlsActive[4])
-		{
+        {
+	        // gameObject.transform.localScale = Vector3.one;
+	        var s = Player.instance.GetComponent<SpriteRenderer>();
+	        s.color = Color.white;
+
             if (dashHoldTime <= 0) return;
 
             // print("released");
 
-            if (dashHoldTime > Data.timeToFullDash)
-                dashHoldTime = Data.timeToFullDash;
 
             float dashPower = Mathf.Clamp01(dashHoldTime / Data.timeToFullDash);
 

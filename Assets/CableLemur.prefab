@@ -141,6 +141,7 @@ MonoBehaviour:
   waveSpawnLeft: {fileID: 57343619220502035}
   waveSpawnRight: {fileID: 2904518510127242409}
   wavePrefab: {fileID: 8614198849576747258, guid: 11b398754f3754ad5b61c9d73649ecd9, type: 3}
+  duringBattle: 0
 --- !u!95 &2680616691536019322
 Animator:
   serializedVersion: 5
@@ -196,7 +197,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.26
 --- !u!50 &5721327477015010558
 Rigidbody2D:
   serializedVersion: 4

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,11 @@ public class MenuController : MonoBehaviour
    public void StartGame()
     {
         SceneManager.LoadScene("Intro");
+    }
+
+    private void Start()
+    {
+        GlobalSound.PlayMusic("game", true);
     }
 
     public void OpenCloseOptions()

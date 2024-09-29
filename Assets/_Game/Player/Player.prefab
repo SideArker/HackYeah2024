@@ -313,7 +313,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  usedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  usedColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
   movement: 0
   Data: {fileID: 11400000, guid: e6de6150ab38ff74b9ee0fa32028adf7, type: 2}
   _groundCheckPoint: {fileID: 8077527218013605482}
@@ -338,10 +338,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89aa86804aeefe4439116e62ecb7181d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  spawnpoint: {fileID: 0}
+  health: 4
   onPlrDeath:
     m_PersistentCalls:
       m_Calls: []
+  hp: {fileID: 0}
+  heartPrefab: {fileID: 4802089974545211466, guid: 12d9daebe8a4b4d35aa343a8c6125984, type: 3}
   attackPoint: {fileID: 7255690997067899470}
   attackObject: {fileID: 1979835995851137103, guid: dae6d008887fa4a399fbb610cdb5a0f9, type: 3}
   attackDelay: 0.5
@@ -581,7 +584,7 @@ Transform:
   m_GameObject: {fileID: 4872628740614470850}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68, y: 0, z: 0}
+  m_LocalPosition: {x: 1.1800001, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

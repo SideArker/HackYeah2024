@@ -29,6 +29,11 @@ public class CableLemur : MonoBehaviour
     {
         _playerMovement = PlayerMovement.Instance;
         _animator = GetComponent<Animator>();
+
+        GlobalSound.StopAllMusic();
+        GlobalSound.PlayMusic("FinalBossMusic");
+        
+        StartBattle();
     }
 
     [Button]
@@ -83,7 +88,7 @@ public class CableLemur : MonoBehaviour
             if (Health <= 0)
             {
                 Debug.Log("Enemy dies now");
-                Destroy(gameObject);
+                Application.Quit();
             }
         }
     }

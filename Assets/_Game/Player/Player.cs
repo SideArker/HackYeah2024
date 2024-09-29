@@ -63,6 +63,10 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         hp.text = health.ToString();
+        
+        // GlobalSound.PlayMusic("ODGŁOSY CHODZENIA", true);
+        // GlobalSound.GetMusicAudioSource("ODGŁOSY CHODZENIA").mute = true;
+
     }
 
 
@@ -88,21 +92,11 @@ public class Player : MonoBehaviour
         hp.text = health.ToString();
         anim.SetBool("Iframe", true);
         Invoke(nameof(iframeCooldown), iframeDuration);
-        
-        if(health <= 0)
+
+        if (health <= 0)
         {
-            if(!CableLemur.Instance.duringBattle)
-            {
-                onPlrDeath.Invoke();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-            else
-            {
-                health = 5; 
-                DamagePlayer();
-                instance.gameObject.transform.position = spawnpoint.position;
-                StopAllCoroutines();
-            }
+            onPlrDeath.Invoke();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         Debug.Log("Plr dmaged");

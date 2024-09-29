@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogs:
   - Name: Narrator
-    Text: 'Long time ago in the land of Lemuri where there was peace and prosperity...
+    Text: 'Long time ago in the land of Lemuria where there was peace and prosperity...
 
 '
     icon: {fileID: 0}
@@ -294,7 +294,7 @@ MonoBehaviour:
     FreezeMovement: 0
     FontSize: 36
   - Name: Narrator
-    Text: '...something terrible happened
+    Text: '...something terrible happened.
 
 '
     icon: {fileID: 0}
@@ -320,7 +320,7 @@ MonoBehaviour:
     FreezeMovement: 0
     FontSize: 36
   - Name: Narrator
-    Text: 'Someone has to stop this madness.
+    Text: 'Someone has to stop this madness. Well...
 
 '
     icon: {fileID: 0}
@@ -329,7 +329,7 @@ MonoBehaviour:
     FontSize: 36
   - Name: Narrator
     Text: 'The treacherous lemur began to use technology to speed up the entire process
-      as quickly as possible
+      as quickly as possible,
 
 '
     icon: {fileID: 0}
@@ -337,8 +337,8 @@ MonoBehaviour:
     FreezeMovement: 0
     FontSize: 36
   - Name: Narrator
-    Text: 'Lemurs opposed to all this could not remain passive, so they began to
-      use modern technology to stop the plans of the cruel tyrant
+    Text: 'lemurs opposed to all this could not remain passive, so they began to
+      use modern technology to stop the plans of the cruel tyrant.
 
 '
     icon: {fileID: 0}
@@ -346,8 +346,8 @@ MonoBehaviour:
     FreezeMovement: 0
     FontSize: 36
   - Name: Narrator
-    Text: 'And so began a battle using advanced technology between seemingly primitive
-      individuals
+    Text: 'And so it began: a battle using advanced technology between seemingly
+      primitive individuals.
 
 '
     icon: {fileID: 0}
@@ -355,9 +355,8 @@ MonoBehaviour:
     FreezeMovement: 0
     FontSize: 36
   - Name: Narrator
-    Text: 'Someone has to stop the reign of the big cruel lemur
-
-'
+    Text: Someone has to stop the reign of the big cruel lemurm and this possibly
+      gonna be you.
     icon: {fileID: 0}
     NameColor: {r: 0.6156863, g: 0.9529412, b: 0.20392157, a: 1}
     FreezeMovement: 0

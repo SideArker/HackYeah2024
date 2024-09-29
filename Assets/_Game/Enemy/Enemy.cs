@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] enemyType enemyVariant;
     [Tooltip("Amount of hits enemy needs to die")]
     [SerializeField] int Health;
+    [SerializeField] Material dmgMAT;
+    [SerializeField] float flashDuration;
+    Material originalMAT;
 
     [Header("Movement")]
     [SerializeField] float speed;
@@ -36,6 +39,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         if (enemyVariant == enemyType.Bird) StartCoroutine(BirdAttackTick());
+        originalMAT = GetComponent<SpriteRenderer>().material;
     }
 
 
@@ -91,9 +95,34 @@ public class Enemy : MonoBehaviour
     }
     
 
+    IEnumerator DamageFlash()
+    {
+        float currentFlashAmount = 0f;
+        float elapsedTime = 0f;
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+
+        while (elapsedTime < flashDuration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            currentFlashAmount = Mathf.Lerp(1f, 0f, (elapsedTime / flashDuration));
+
+            print(renderer.material.GetFloat("_FlashAmount"));
+            renderer.material.SetFloat("_FlashAmount", currentFlashAmount);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        GetComponent<SpriteRenderer>().material = originalMAT;
+
+    }
+
     public void Damage()
     {
-        print("Damage Enemy");
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        renderer.material = dmgMAT;
+
+        StartCoroutine(DamageFlash());
+              print("Damage Enemy");
         Health--;
 
         if(Health <= 0)

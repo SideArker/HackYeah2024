@@ -362,6 +362,9 @@ public class PlayerMovement : MonoBehaviour
 			Run(Data.dashEndRunLerp);
 		}
 
+		GetComponent<Animator>().SetFloat("xVelocity", math.abs(RB.velocity.x));
+		GetComponent<Animator>().SetFloat("yVelocity", RB.velocity.y);
+
 		//Handle Slide
 		if (IsSliding)
 			Slide();

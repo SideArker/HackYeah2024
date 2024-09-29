@@ -30,6 +30,7 @@ public class Attack : MonoBehaviour
         {
             enemy.Damage();
             isTouched = true;
+
         }
         else if(boss)
         {

@@ -20,9 +20,10 @@ public class Player : MonoBehaviour
 
     private bool isAttacking = false;
     [SerializeField] private float attackDelay = 0.5f;
+    [SerializeField] float hitStopDuration = .05f;
+    [SerializeField] GameObject runParticle;
 
     [SerializeField] private float iframeDuration;
-    [SerializeField] Material IframeMAT;
 
     Material PrevMat;
     bool iframes = false;
@@ -84,13 +85,17 @@ public class Player : MonoBehaviour
             StartCoroutine(AttackCoroutine());
     }
 
+
     IEnumerator AttackCoroutine()
     {
+        anim.SetBool("Attacking", true);
         isAttacking = true;
         var temp = Instantiate(attackObject);
         temp.transform.position = attackPoint.position;
         yield return new WaitForSecondsRealtime(attackDelay);
         isAttacking = false;
+
+        anim.SetBool("Attacking", false);
     }
 
     public void SetControl(int control, bool state)
@@ -101,15 +106,22 @@ public class Player : MonoBehaviour
     
     private void Update()
     {
-
-        if (GetComponent<PlayerMovement>().LastOnGroundTime == 0.1f) grounded = true;
+        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+        if (playerMovement.LastOnGroundTime == 0.1f) grounded = true;
         else grounded = false;
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (playerMovement.IsJumping && !grounded) anim.SetBool("Jumping", true);
+        else if (grounded) anim.SetBool("Jumping", false);
+
+        if(!grounded) runParticle.gameObject.SetActive(false);
+        else runParticle.gameObject.SetActive(true);
+
+        if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
             Attack();
             anim.Play("Attack");
+            anim.SetBool("Attacking", true);
         }
 
         //_playerMovement.ControlsImages[0].color =

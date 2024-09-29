@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -63,6 +62,11 @@ public class Player : MonoBehaviour
         PrevMat = null;
     }
 
+    public void KillPlayer()
+    {
+        health = 0;
+        onPlrDeath.Invoke();
+    }
     public void DamagePlayer()
     {
         if (iframes) return;

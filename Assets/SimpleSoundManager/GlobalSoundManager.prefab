@@ -76,4 +76,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0440655db2fae402c95f9e85c4a4db7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - {fileID: 8300000, guid: e92c236c1b78c450f8765a755b97539f, type: 3}
+  - {fileID: 8300000, guid: 7f4ce86cb50284ca88995eabc206fa3d, type: 3}
+  - {fileID: 8300000, guid: d27487874d94c4c2d95e2b4d0f052146, type: 3}
+  - {fileID: 8300000, guid: e93ef91665d69441e97b4a98abc407e4, type: 3}
+  - {fileID: 8300000, guid: 62c7cbae8459b4ee0ad205c2d0c336c7, type: 3}
+  - {fileID: 8300000, guid: 838916b9c8523425495100bd1995517e, type: 3}
+  - {fileID: 8300000, guid: 21392b05e12a24e99b79334a2515fd17, type: 3}
